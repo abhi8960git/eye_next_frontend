@@ -25,12 +25,12 @@ export default function RootLayout({
 			<body className={inter.className}>
 				{/* <Provider store={store}> */}
 				<Providers>
-					<Header />
+					{/* <Header /> */}
 					<div className=" bg-background">
 						<Suspense fallback={<Loading />}>{children}</Suspense>
 					</div>
-					<Toaster />
-					<Footer />
+					{/* <Toaster /> */}
+					{/* <Footer /> */}
 				</Providers>
 
 				{/* </Provider> */}

@@ -1,167 +1,172 @@
-import { Jockey_One } from "next/font/google";
-import type { Config } from "tailwindcss";
-const {
-	default: flattenColorPalette,
-} = require("tailwindcss/lib/util/flattenColorPalette");
+import type { Config } from "tailwindcss"
+import { fontFamily } from "tailwindcss/defaultTheme"
+import { Jockey_One,Inter } from "next/font/google";
 
-const config = {
-	darkMode: ["class"],
-	content: [
-		"./pages/**/*.{ts,tsx}",
-		"./components/**/*.{ts,tsx}",
-		"./app/**/*.{ts,tsx}",
-		"./src/**/*.{ts,tsx}",
-	],
-	prefix: "",
-	theme: {
-		fontFamily: {
-			heading1: ["jockeyOne", "serif"],
-		},
-		container: {
-			center: true,
-			padding: "2rem",
-			screens: {
-				"2xl": "1400px",
-			},
-		},
-		extend: {
-			scrollBehavior: ["smooth"],
 
-			colors: {
-				//Daisy Ui colors
-				"primary-content": "#ffffff",
-				"secondary-content": "#ffffff",
-				"accent-content": "#0e0c16",
-				neutral: "#d9d9d9",
-				"neutral-content": "#292929",
-				"base-100": "#292929",
-				"base-200": "#222222",
-				"base-300": "#1e1e1e",
-				"base-content": "#ffffff",
-				info: "#a8a29e",
-				"info-content": "#0a0a09",
-				success: "#30c17e",
-				"success-content": "#ffffff",
-				warning: "#bd0929",
-				"warning-content": "#ffffff",
-				error: "#bd0929",
-				"error-content": "#ffffff",
 
-				//shadCn colours
-				border: "var(--border)",
-				input: "#787878",
-				ring: "#ff7d04",
-				background: "#ffffff",
-				secondaryBackground: "#292929",
-				foreground: "var(--foreground)",
-				primary: {
-					DEFAULT: "#ff7d04",
-					foreground: "ffffff",
-				},
-				secondary: {
-					DEFAULT: "#292929",
-					foreground: "#ffffff",
-				},
-				destructive: {
-					DEFAULT: "var(--destructive)",
-					foreground: "var(--destructive-foreground)",
-				},
-				muted: {
-					DEFAULT: "#4b4b4b",
-					foreground: "#ffffff",
-				},
-				accent: {
-					DEFAULT: "var(--accent)",
-					foreground: "var(--accent-foreground)",
-				},
-				popover: {
-					DEFAULT: "var(--popover)",
-					foreground: "var(--popover-foreground)",
-				},
-				card: {
-					DEFAULT: "var(--card)",
-					foreground: "var(--card-foreground)",
-				},
-			},
-			borderRadius: {
-				lg: "var(--radius)",
-				md: "calc(var(--radius) - 2px)",
-				sm: "calc(var(--radius) - 4px)",
-			},
-			keyframes: {
-				"accordion-down": {
-					from: { height: "0" },
-					to: { height: "var(--radix-accordion-content-height)" },
-				},
-				"accordion-up": {
-					from: { height: "var(--radix-accordion-content-height)" },
-					to: { height: "0" },
-				},
-				scroll: {
-					to: {
-						transform: "translate(calc(-50% - 0.5rem))",
-					},
-				},
-			},
-			animation: {
-				scroll:
-					"scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite",
-				"accordion-down": "accordion-down 0.2s ease-out",
-				"accordion-up": "accordion-up 0.2s ease-out",
-			},
-		},
-	},
-	plugins: [
-		require("@tailwindcss/typography"),
-		require("tailwindcss-animate"),
-		addVariablesForColors,
-		require("daisyui"),
-	],
-	daisyui: {
-		themes: [
-			{
-				mytheme: {
-					primary: "#ff7d04",
-					secondary: "#292929",
-					"primary-content": "#ffffff",
-					"secondary-content": "#ffffff",
-					"accent-content": "#0e0c16",
-					neutral: "#d9d9d9",
-					"neutral-content": "#292929",
-					"base-100": "#292929",
-					"base-200": "#222222",
-					"base-300": "#1e1e1e",
-					"base-content": "#ffffff",
-					info: "#a8a29e",
-					"info-content": "#0a0a09",
-					success: "#30c17e",
-					"success-content": "#ffffff",
-					warning: "#bd0929",
-					"warning-content": "#ffffff",
-					error: "#bd0929",
-					"error-content": "#ffffff",
-				},
-			},
-		], // false: only light + dark | true: all themes | array: specific themes like this ["light", "dark", "cupcake"]
-		darkTheme: "dark", // name of one of the included themes for dark mode
-		base: true, // applies background color and foreground color for root element by default
-		styled: true, // include daisyUI colors and design decisions for all components
-		utils: true, // adds responsive and modifier utility classes
-		prefix: "du-", // prefix for daisyUI classnames (components, modifiers and responsive class names. Not colors)
-		logs: true, // Shows info about daisyUI version and used config in the console when building your CSS
-		themeRoot: ":root", // The element that receives theme color CSS variables
-	},
-} satisfies Config;
+const config: Config = {
+  darkMode: ["class"],
+  content: [
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+    "./*.{ts,tsx}",
+    "*.{js,ts,jsx,tsx,mdx}",
+  ],
+  theme: {
+    container: {
+      center: true,
+      padding: "2rem",
+      screens: {
+        "2xl": "1400px",
+      },
+    },
+    fontFamily: {
+      heading1: ["jockeyOne", "serif"],
+      heading2: ["Inter", "sans-serif"],
+      sans: ["Inter", ...fontFamily.sans],
+    },
+    extend: {
+      colors: {
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
 
-function addVariablesForColors({ addBase, theme }: any) {
-	let allColors = flattenColorPalette(theme("colors"));
-	let newVars = Object.fromEntries(
-		Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
-	);
-
-	addBase({
-		":root": newVars,
-	});
+        primary: {
+          DEFAULT: "#f97316", // orange-500
+          foreground: "#ffffff",
+        },
+        secondary: {
+          DEFAULT: "#292929",
+          foreground: "#ffffff",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        muted: {
+          DEFAULT: "#4b4b4b",
+          foreground: "#a1a1aa",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
+      },
+      buttons: {
+        primary: {
+          background: "#f97316", // orange-500
+          text: "#ffffff",
+          hover: "#ea580c", // orange-600
+          active: "#c2410c", // orange-700
+        },
+        secondary: {
+          background: "#292929", // secondary
+          text: "#ffffff",
+          hover: "#3d3d3d",
+          active: "#1a1a1a",
+        },
+        outline: {
+          border: "#f97316", // orange-500
+          text: "#f97316",
+          hover: {
+            background: "#f97316",
+            text: "#ffffff",
+          },
+          active: {
+            background: "#ea580c", // orange-600
+            text: "#ffffff",
+          },
+        },
+      },
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
+      },
+      keyframes: {
+        "progress-loading": {
+          "0%": { transform: "translateX(0%)" },
+          "50%": { transform: "translateX(50%)" },
+          "100%": { transform: "translateX(100%)" },
+        },
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+        "fade-in-50": {
+          from: { opacity: "0" },
+          to: { opacity: "1" },
+        },
+        "slide-in-from-top-5": {
+          from: { transform: "translateY(-5%)" },
+          to: { transform: "translateY(0)" },
+        },
+        "slide-in-from-left-10": {
+          from: { transform: "translateX(-10%)", opacity: "0" },
+          to: { transform: "translateX(0)", opacity: "1" },
+        },
+        "slide-in-from-left-5": {
+          from: { transform: "translateX(-5%)", opacity: "0" },
+          to: { transform: "translateX(0)", opacity: "1" },
+        },
+        "slide-in-from-bottom-5": {
+          from: { transform: "translateY(5%)", opacity: "0" },
+          to: { transform: "translateY(0)", opacity: "1" },
+        },
+        "slide-in-from-right-10": {
+          from: { transform: "translateX(10%)", opacity: "0" },
+          to: { transform: "translateX(0)", opacity: "1" },
+        },
+        "slide-in-from-top-10": {
+          from: { transform: "translateY(-10%)", opacity: "0" },
+          to: { transform: "translateY(0)", opacity: "1" },
+        },
+        "slide-in-from-bottom-full": {
+          from: { transform: "translateY(100%)" },
+          to: { transform: "translateY(0)" },
+        },
+        "zoom-in-95": {
+          from: { opacity: "0", transform: "scale(0.95)" },
+          to: { opacity: "1", transform: "scale(1)" },
+        },
+        marquee: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-33.33%)" },
+        },
+      },
+      animation: {
+        "progress-loading": "progress-loading 2s infinite cubic-bezier(0.4, 0, 0.2, 1)",
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
+        "fade-in-50": "fade-in-50 0.3s ease-out",
+        "slide-in-from-bottom-5": "slide-in-from-bottom-5 0.4s ease-out forwards",
+        "slide-in-from-right-10": "slide-in-from-right-10 0.3s ease-out forwards",
+        "slide-in-from-left-10": "slide-in-from-left-10 0.3s ease-out forwards",
+        "slide-in-from-left-5": "slide-in-from-left-5 0.2s ease-out forwards",
+        "slide-in-from-top-10": "slide-in-from-top-10 0.3s ease-out forwards",
+        "slide-in-from-bottom-full": "slide-in-from-bottom-full 0.3s ease-out forwards",
+        "zoom-in-95": "zoom-in-95 0.2s ease-out",
+        marquee: "marquee 20s linear infinite",
+      },
+    },
+  },
+  plugins: [require("@tailwindcss/typography"), require("tailwindcss-animate")],
 }
 
-export default config;
+export default config

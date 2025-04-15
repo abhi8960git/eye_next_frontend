@@ -9,46 +9,49 @@ import ExploreDesigns from "@/components/Home/ExploreDesigns/ExploreDesigns";
 import FeatureStrip from "@/components/Home/FeatureStrip/FeatureStrip";
 import About from "@/components/Home/About/About";
 import PersonalizedPicks from "@/components/Home/PersonalizedPicks/PersonalizedPicks";
+import DeauthHomepage from "@/components/NewHomePage";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between md:gap-10 gap-5">
-      <div className="text-start bg-red-400">
-        <HeroBanner />
-      </div>
-      <Wrapper>
-        <div>
-          <BestSellingSection />
-        </div>
-      </Wrapper>
-      <div className=" w-screen ">
-        <FeatureStrip />
-      </div>
-      <Wrapper>
-        <div>
-          <Designers />
-        </div>
-        <div className="">
-          <About />
-        </div>
-      </Wrapper>
-      <div className=" w-screen ">
-        <CategorySection />
-      </div>
-      <Wrapper>
-        <div>
-          <ExploreSection />
-        </div>
-      </Wrapper>
+    // <main className="flex min-h-screen flex-col items-center justify-between md:gap-10 gap-5">
+    //   <div className="text-start bg-red-400">
+    //     <HeroBanner />
+    //   </div>
+    //   <Wrapper>
+    //     <div>
+    //       <BestSellingSection />
+    //     </div>
+    //   </Wrapper>
+    //   <div className=" w-screen ">
+    //     <FeatureStrip />
+    //   </div>
+    //   <Wrapper>
+    //     <div>
+    //       <Designers />
+    //     </div>
+    //     <div className="">
+    //       <About />
+    //     </div>
+    //   </Wrapper>
+    //   <div className=" w-screen ">
+    //     <CategorySection />
+    //   </div>
+    //   <Wrapper>
+    //     <div>
+    //       <ExploreSection />
+    //     </div>
+    //   </Wrapper>
 
-      <div className="bg-accent w-screen lg:px-32 mb-10">
-        <ExploreDesigns />
-      </div>
-      <Wrapper>
-        <div>
-          <PersonalizedPicks />
-        </div>
-      </Wrapper>
-    </main>
+    //   <div className="bg-accent w-screen lg:px-32 mb-10">
+    //     <ExploreDesigns />
+    //   </div>
+    //   <Wrapper>
+    //     <div>
+    //       <PersonalizedPicks />
+    //     </div>
+    //   </Wrapper>
+    // </main>
+<DeauthHomepage/>
+    
   );
 }

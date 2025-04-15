@@ -2,54 +2,92 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-	:root {
-		--background: #222222; /*  darker black  */
-		--secondary-background: #292929; /*  lighter black */
-		--foreground: #221f1d;
-		--card: #ffffff;
-		--card-foreground: #221f1d;
-		--popover: #ffffff;
-		--popover-foreground: #221f1d;
-		--primary: #ff0060;
-		--primary-foreground: #fdfcf9;
-		--secondary: #f3f1eb;
-		--secondary-foreground: #dbdbdb;
-		--muted: #b8b8b8;
-		--muted-foreground: #716c69;
-		--accent: #ff7d05;
-		--accent-foreground: #f3f1eb;
-		--destructive: #ff2d4d;
-		--destructive-foreground: #fdfcf9;
-		--border: #e0e0e0;
-		--input: #e0e0e0;
-		--ring: #ff7d05;
-		--radius: 0.5rem;
-	}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
-	.dark {
-		--background: #222222; /*  darker black  */
-		--secondary-background: #292929; /*  lighter black */
-		--foreground: #221f1d;
-		--card: #ffffff;
-		--card-foreground: #221f1d;
-		--popover: #ffffff;
-		--popover-foreground: #221f1d;
-		--primary: #ff0060;
-		--primary-foreground: #fdfcf9;
-		--secondary: #f3f1eb;
-		--secondary-foreground: #3b2e28;
-		--muted: #f3f1eb;
-		--muted-foreground: #716c69;
-		--accent: #ff7d05;
-		--accent-foreground: #f3f1eb;
-		--destructive: #ff2d4d;
-		--destructive-foreground: #fdfcf9;
-		--border: #e0e0e0;
-		--input: #e0e0e0;
-		--ring: #ff0060;
-		--radius: 0.5rem;
-	}
+@font-face {
+  font-family: 'jockeyOne';
+  src: url('https://fonts.googleapis.com/css2?family=Jockey+One&display=swap');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+
+    --primary: 24 94% 53%; /* orange-500 */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 16%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 0 0% 30%;
+    --muted-foreground: 0 0% 63.9%;
+
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 24 94% 53%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+  h1, h2, h3 {
+    @apply font-heading1;
+  }
+  h4, h5, h6 {
+    @apply font-heading2;
+  }
 }
 
 @font-face {
@@ -57,29 +95,43 @@
 	src: url("../../public/fonts/JockeyOne-Regular.ttf");
 }
 
-@layer base {
-	* {
-		@apply border-border;
-	}
-	body {
-		@apply bg-background text-foreground;
-	}
-}
+@layer components {
+  /* Button Styles */
+  .btn-primary {
+    @apply bg-orange-500 text-white px-4 py-2 rounded-md hover:bg-orange-600 transition-colors font-medium;
+  }
+  
+  .btn-secondary {
+    @apply bg-secondary text-white px-4 py-2 rounded-md hover:bg-secondary/90 transition-colors font-medium;
+  }
+  
+  .btn-outline {
+    @apply border border-orange-500 text-orange-500 px-4 py-2 rounded-md hover:bg-orange-500 hover:text-white transition-colors font-medium;
+  }
+  
+  .btn-sm {
+    @apply px-3 py-1.5 text-sm;
+  }
+  
+  .btn-rounded {
+    @apply rounded-full;
+  }
+  
+  /* Pagination Styles */
+  .pagination-button {
+    @apply h-8 w-8 flex items-center justify-center rounded-md transition-colors;
+  }
+  
+  .pagination-button-active {
+    @apply bg-orange-500 text-white;
+  }
+  
+  .pagination-button-inactive {
+    @apply bg-background text-orange-500 border border-orange-500 hover:bg-orange-500 hover:text-white;
+  }
 
-.swiper {
-	width: 100%;
-	padding-top: 50px;
-	padding-bottom: 50px;
-}
-
-.swiper-slide {
-	background-position: center;
-	background-size: cover;
-	width: 300px;
-	height: 300px;
-}
-
-.swiper-slide img {
-	display: block;
-	width: 100%;
+  /* Text styles */
+  .text-muted {
+    @apply text-zinc-700;
+  }
 }
