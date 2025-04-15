@@ -10,9 +10,11 @@ import FeatureStrip from "@/components/Home/FeatureStrip/FeatureStrip";
 import About from "@/components/Home/About/About";
 import PersonalizedPicks from "@/components/Home/PersonalizedPicks/PersonalizedPicks";
 import DeauthHomepage from "@/components/NewHomePage";
+import ArtistToFollowPage from "@/components/NewArtistToFollow";
 
 export default function Home() {
   return (
+    <>
     // <main className="flex min-h-screen flex-col items-center justify-between md:gap-10 gap-5">
     //   <div className="text-start bg-red-400">
     //     <HeroBanner />
@@ -51,7 +53,8 @@ export default function Home() {
     //     </div>
     //   </Wrapper>
     // </main>
-<DeauthHomepage/>
-    
+      <DeauthHomepage />
+      <ArtistToFollowPage/>
+    </>
   );
 }
