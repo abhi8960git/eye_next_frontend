@@ -12,6 +12,7 @@ import PersonalizedPicks from "@/components/Home/PersonalizedPicks/PersonalizedP
 import DeauthHomepage from "@/components/NewHomePage";
 import ArtistToFollowPage from "@/components/NewArtistToFollow";
 import { CategoriesSection } from "@/components/NewCategorySection/CategoriesSection";
+import LatestLaunchSection from "@/components/LatestLaunch";
 
 export default function Home() {
   return (
@@ -57,6 +58,7 @@ export default function Home() {
       <DeauthHomepage />
       <ArtistToFollowPage/>
       <CategoriesSection/>
+      <LatestLaunchSection/>
 
     </>
   );

@@ -22,7 +22,7 @@ const config: Config = {
     },
     fontFamily: {
       heading1: ["jockeyOne", "serif"],
-      heading2: ["Inter", "sans-serif"],
+      heading2: ["var(--font-heading)", "sans-serif"],
       sans: ["Inter", ...fontFamily.sans],
     },
     extend: {
@@ -38,20 +38,20 @@ const config: Config = {
         foreground: "hsl(var(--foreground))",
 
         primary: {
-          DEFAULT: "#f97316", // orange-500
-          foreground: "#ffffff",
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {
-          DEFAULT: "#292929",
-          foreground: "#ffffff",
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
         },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
           foreground: "hsl(var(--destructive-foreground))",
         },
         muted: {
-          DEFAULT: "#4b4b4b",
-          foreground: "#a1a1aa",
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
         },
         accent: {
           DEFAULT: "hsl(var(--accent))",
