@@ -13,10 +13,12 @@ import DeauthHomepage from "@/components/NewHomePage";
 import ArtistToFollowPage from "@/components/NewArtistToFollow";
 import { CategoriesSection } from "@/components/NewCategorySection/CategoriesSection";
 import LatestLaunchSection from "@/components/LatestLaunch";
+import DesignsAndLatestLaunch from "@/components/DesignsAndLatestLaunch";
+import DeauthFooter from "@/components/NewFooter/footer/DeauthFooter";
 
 export default function Home() {
   return (
-    <>
+    <div className="overflow-hidden">
     {/* // <main className="flex min-h-screen flex-col items-center justify-between md:gap-10 gap-5">
     //   <div className="text-start bg-red-400">
     //     <HeroBanner />
@@ -59,7 +61,9 @@ export default function Home() {
       <ArtistToFollowPage/>
       <CategoriesSection/>
       <LatestLaunchSection/>
+      <DesignsAndLatestLaunch/>
+      <DeauthFooter/>
 
-    </>
+    </div>
   );
 }

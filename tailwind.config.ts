@@ -4,6 +4,7 @@ import { Jockey_One, Inter } from "next/font/google";
 
 const config: Config = {
   darkMode: ["class"],
+  prefix: "",
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -182,11 +183,11 @@ const config: Config = {
         "slide-in-from-bottom-full": "slide-in-from-bottom-full 0.3s ease-out forwards",
         "zoom-in-95": "zoom-in-95 0.2s ease-out",
         marquee: "marquee 20s linear infinite",
-        "spin-slow": "spin 30s linear infinite",
+        "spin-slow": "spin 20s linear infinite",
       },
     },
   },
-  plugins: [require("@tailwindcss/typography"), require("tailwindcss-animate")],
-}
+  plugins: [require("tailwindcss-animate")],
+} satisfies Config
 
 export default config

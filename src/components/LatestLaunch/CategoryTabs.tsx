@@ -15,11 +15,11 @@ export default function CategoryTabs({ activeCategory, onCategoryChange }: Categ
 
   return (
     <div className="mb-8">
-      <div className="flex justify-center border-b overflow-x-auto">
+      <div className="flex justify-center  overflow-x-auto">
         {categories.map((category) => (
           <button
             key={category.id}
-            className={`px-6 py-3 whitespace-nowrap ${
+            className={`px-6 py-3 whitespace-nowrap font-heading1 ${
               activeCategory === category.id
                 ? "text-black border-b-2 border-orange-500"
                 : "text-gray-500 hover:text-black"
